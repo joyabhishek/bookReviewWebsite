@@ -11,17 +11,17 @@
 ##### Website screen shots
 
 Login Page:
-https://github.com/joyabhishek/bookReviewWebsite/blob/master/Screenshots/Login%20Page.PNG
+![alt text](https://github.com/joyabhishek/bookReviewWebsite/blob/master/Screenshots/Login%20Page.PNG "Login Page")
 
 Index Page:
-https://github.com/joyabhishek/bookReviewWebsite/blob/master/Screenshots/Index%20Page.PNG
+![alt text](https://github.com/joyabhishek/bookReviewWebsite/blob/master/Screenshots/Index%20Page.PNG "Index Page")
 
 Search bar in index Page:
-https://github.com/joyabhishek/bookReviewWebsite/blob/master/Screenshots/Search%20Bar.PNG
+![alt text](https://github.com/joyabhishek/bookReviewWebsite/blob/master/Screenshots/Search%20Bar.PNG "Search bar in index Page")
 
 Book Page:
-https://github.com/joyabhishek/bookReviewWebsite/blob/master/Screenshots/Book%20Page.PNG
+![alt text](https://github.com/joyabhishek/bookReviewWebsite/blob/master/Screenshots/Book%20Page.PNG "Book Page")
 
 User Page:
-https://github.com/joyabhishek/bookReviewWebsite/blob/master/Screenshots/User%20Page.PNG
+![alt text](https://github.com/joyabhishek/bookReviewWebsite/blob/master/Screenshots/User%20Page.PNG "User Page")
 
