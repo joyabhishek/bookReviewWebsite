@@ -1,20 +1,19 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>register page</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
-    </head>
-    <body>
- {% from "_formhelper.html" import render_field %}
-<form method=post>
-  <dl>
-    {{ form.csrf_token }}
-    {{ render_field(form.username) }}
-    {{ render_field(form.password) }}
-    {{ render_field(form.confirm) }}
-  </dl>
-  <p><input type=submit value=Register>
-</form>
-    </body>
-</html>
+{% extends "registerLoginLayout.html" %}
+
+{% block formBlock %}
+
+                <form method=post>
+                {% from "_formhelper.html" import render_field %}
+                {{ form.csrf_token }}
+                {{ render_field(form.username) }}
+                {{ render_field(form.password) }}
+                {{ render_field(form.confirm) }}
+                  <div style="display: flex; justify-content: center;">
+                    <button type="Login" class="btn btn-primary mr-2">Register</button>
+                    <a href="{{ url_for('login') }}" class="btn btn-primary" role="button">Already have account? Login</a>
+                  </div> 
+                </form>
+
+{% endblock %}
+
+

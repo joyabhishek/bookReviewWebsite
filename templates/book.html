@@ -1,0 +1,90 @@
+{% extends "layout.html" %}
+
+{% block jsScriptImport %}
+<script type="text/javascript" src="{{ url_for('static',filename='book.js') }}"></script>
+{% endblock %}
+
+{% block body%}
+    <section>
+      <div class="container">
+          <div class="row mt-3">
+              <div class="col alert alert-secondary"><h4 class="alert-secondary">Book Info</h4></div>
+          </div>
+          <div class="row alert alert-light shadow-sm" >
+              <div class="col">
+                  <div class="row"><b>Name</b>: {{ bookInfo.title }}</div>
+                  <div class="row"><b>Author</b>: {{ bookInfo.author}})</div>
+                  <div class="row"><b>Year</b>: {{ bookInfo.year }}</div>         
+                  <div class="row"><b>Rating</b>: {{ "{:,.2f}".format(bookInfo.average_score) }} ( {{ bookInfo.noOfRating }} )</div>
+                  <div class="row"><b>Isbn</b>: <span id='isbn'>{{ bookInfo.isbn }}</span></div>
+              </div>
+          </div>
+          <div class="row mt-3">
+              <div class="col alert alert-primary"><h5 class="alert-heading">Reviews and ratings</h5></div>
+          </div>      
+        {% if bookInfo['reviewAllowed'] == true %}
+          <div class="row">
+            <form id='reviewForm' style="width: 100%">
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Review</label>
+                <textarea type="text" id="inputReviewText" class="form-control"  placeholder="Type your review here ..." rows="3"></textarea>
+              </div>
+              <div class="form-row align-items-center">
+                <div class="col-1">
+                  <div class="form-group">
+                    <label for="exampleFormControlSelect1">Rating:</label>
+                    </div> 
+                  </div>
+                <div class="col">
+                  <div class="form-group">
+                    <select name="rating" id="inputRating" class="form-control" >
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5" selected>5</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col">
+                   <div class="form-group">
+                      <input type="submit" class="btn btn-primary"value="Submit the rating">
+                   </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        {% else %}
+          <div class="row alert alert-success">
+            <div class="col">
+              <div class="row"><h6 class="alert-heading" id="username"> User: {{ bookInfo['loggedInUserReview']['username'] }} </h6> </div>
+              <div class="row"><hr style="width: 100%"></div>
+              <div class="row" id="reviewText">Review: {{ bookInfo['loggedInUserReview']['review'] }}</div>
+              <div class="row"><hr style="width: 100%"></div>
+              <div class="row" id="rating">Rating: {{ bookInfo['loggedInUserReview']['rating'] }}</div>
+            </div>
+          </div>
+        {% endif %}
+          <div class="row alert alert-success" id="userReviewDetails" style="display: none;">
+            <div class="col">
+              <div class="row"><h6 class="alert-heading" id="username"></h6> </div>
+              <div class="row"><hr style="width: 100%"></div>
+              <div class="row" id="reviewText"></div>
+              <div class="row"><hr style="width: 100%"></div>
+              <div class="row" id="rating"></div>
+            </div>
+          </div>      
+          {% for review in bookInfo['reviews'] %}
+          <div class="row alert alert-primary">
+            <div class="col">
+              <div class="row"><h6 class="alert-heading" id="username"> User: {{ review['username'] }} </h6> </div>
+              <div class="row"><hr style="width: 100%"></div>
+              <div class="row" id="reviewText">Review: {{ review['review'] }}</div>
+              <div class="row"><hr style="width: 100%"></div>
+              <div class="row" id="rating">Rating: {{ review['rating'] }}</div>
+            </div>
+          </div>
+          {% endfor %}
+      </div>
+    </section>
+{% endblock %}

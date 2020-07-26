@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block jsScriptImport %}
+<script type="text/javascript" src="{{ url_for('static',filename='index.js') }}"></script>
+{% endblock %}
+
+{% block body%}
+    <section>
+      <div class="container">
+      {% for indexSubHeader, indexSubHeaderItems in indexDataDictionary.items() %}
+      {% set color = ['primary', 'success']|random %}
+        <div class=" row alert alert-{{color}}">
+                <h5>{{ indexSubHeader }}</h5>
+        </div>
+        <div class="row mb-3 justify-content-around" >
+        {% for indexSubHeaderItem in indexSubHeaderItems %}
+          <div class="col mr-3 rounded-sm alert alert-light shadow-sm">
+            <div class="row"><a href="{{ url_for('book',isbnNumber=indexSubHeaderItem.isbn) }}"><b>Isbn</b>: {{ indexSubHeaderItem.isbn }}</a></div>
+            <div class="row"><b>Title</b>: {{ indexSubHeaderItem.title }}</div>
+            <div class="row"><b>Author</b>: {{ indexSubHeaderItem.author }}</div>
+            <div class="row"><b>Year</b>: {{ indexSubHeaderItem.year }}</div>
+          </div> 
+        {% endfor %}
+        </div>
+      {% endfor %}
+      </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block body%}
+    <section>
+      <div class="container">
+          <div class="row justify-content-between alert alert-light shadow-sm">
+              <div class="col"><p class="h4 alert-heading">{{ username.name }}</p></div>
+              <div class="col justify-content-right">
+                <a class="btn btn-danger" href="{{ url_for('logout') }}" role="button" style="float: right;">Logout</a>
+              </div>
+          </div>
+          <div class="row" >
+              <div class="col alert alert-success rounded-0 shadow-sm"><h6>Books reviewed by Me</h6>
+              </div>
+          </div>
+          {% set sizeOfuserReviewInfo=userReviewInfo|length %}
+          {% if sizeOfuserReviewInfo == 0 %}
+            <div class="row">
+              <div class="col bg-light rounded-0"><h6>None</h6></div>
+            </div>
+          {% else %}
+            {% for userReviewBookInfo in userReviewInfo %}
+            <div class="row shadow-sm mb-2">
+                <a href="{{ url_for('book',isbnNumber=userReviewBookInfo.isbn) }}" style="width: 100%;">
+                <div class="col" style="padding: 1%">
+                    <div class="row"><div class="col"><b>Title</b>: {{ userReviewBookInfo.title }}</div></div>
+                    <div class="row"><div class="col"><b>Author</b>: {{ userReviewBookInfo.author }}</div></div>
+                    <div class="row"><div class="col"><b>Year</b>: {{ userReviewBookInfo.year }}</div></div>
+                    <div class="row"><div class="col"><b>Review</b>: {{ userReviewBookInfo.review }}</div></div>
+                    <div class="row"><div class="col"><b>Rating</b>: {{ userReviewBookInfo.rating }}</div></div>
+                </div>
+              </a>
+            </div>
+            {% endfor %}
+          {% endif %}
+      </div>
+    </section>
+{% endblock %}
+
